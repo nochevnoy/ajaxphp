@@ -10,17 +10,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/ajax.js"></script>
 
 </head>
 <body>
     <form method='POST' action=''>
-        <select>
-            <option disabled selected>Выберите имя</option>
+        <select class="select-city">
+            <option disabled selected>Выберите город</option>
             <? while($var = mysqli_fetch_array($rs)){?>
-            <option value ="<?=$var['id']?>"><?=$var['name']?></option>
+            <option value ="<?=$var['id_city']?>"><?=$var['name']?></option>
             <?}?>
         </select>
-        <input type="submit">
-</form>
+    </form>
+    <div id="cont"></div>
 </body>
 </html>
