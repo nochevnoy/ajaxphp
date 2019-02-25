@@ -1,8 +1,11 @@
 <?php
     require( 'connection.php' );
     $conn = connect();
-    $strSQL = "SELECT * FROM `city`";     // запрос
+    $strSQL = "SELECT * FROM `city`";     // запрос городов
+    $strSQL2 = "SELECT * FROM `provider`";    //запрос провайдеров
+
     $rs = mysqli_query($conn, $strSQL) or die(mysqli_error($conn)); 
+    $rs2 = mysqli_query($conn, $strSQL2) or die(mysqli_error($conn));
 ?>
 <html>
 <head>
@@ -22,7 +25,18 @@
             <option value ="<?=$var['id_city']?>"><?=$var['name']?></option>
             <?}?>
         </select>
+
+        <div id="cont"></div>
+
+        <select class="select-provider">
+            <option disabled selected>Выберите провайдера</option>
+            <? while($var = mysqli_fetch_array($rs2)){?>
+            <option value ="<?=$var['id_provider']?>"><?=$var['name']?></option>
+            <?}?>
+        </select>
+
+        <div id="cont2"></div>
+
     </form>
-    <div id="cont"></div>
 </body>
 </html>
